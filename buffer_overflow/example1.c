@@ -1,24 +1,29 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
 void printmem(void* start_address);
 
+struct chamber {
+	char name[15];
+	int pressure;
+};
+
 int main(void) {
-	char pass[10] = "password";
-	char name[16] = "noname";
-	printmem(name);
-	printf("Hi, What is your name?\n");
-	scanf("%s",name);
-	printf("Hi %s\n", name);
-	printf("Password is: %s\n", pass);
-	printmem(name);
+	struct chamber chamber1;
+	strcpy(chamber1.name, "alpha");
+	chamber1.pressure = 0xAB;
+	printmem(&chamber1);
+	printf("Enter new name for chamber:\n");
+	scanf("%s",chamber1.name);
+	printmem(&chamber1);
 	return 0;
 }
 
 void printmem(void* address) {
-	const unsigned int WINDOW = 20;
-	char* p = (char *)(address);
-	for (p -= WINDOW; p < (char *)(address + WINDOW); ++p) {
-		printf("0x%08X: %c\n", p, *p);
+	const unsigned int WINDOW = 30;
+	unsigned char* p = (unsigned char *)(address);
+	for (p -= WINDOW; p < (unsigned char *)(address + WINDOW); ++p) {
+		printf("%p: %02X (%c)\n", p, (unsigned int)*p, *p);
 	}
 }
