@@ -8,6 +8,7 @@ struct chamber {
 };
 
 void printmem(void* start_address);
+void printmem_int(void* start_address);
 int is_chamber_safe(const struct chamber *);
 void check_chamber(const struct chamber *);
 
@@ -23,6 +24,7 @@ int main(void) {
 	printmem(&chamber1);
 	printf("Chamber pressure: %X\n", chamber1.pressure);
 	check_chamber(&chamber1);
+	printmem_int(&chamber1);
 	return 0;
 }
 
@@ -32,6 +34,16 @@ void printmem(void* address) {
 	printf("--------------------------------\n");
 	for (p; p < (unsigned char *)(address + WINDOW); ++p) {
 		printf("%p: %02X (%c)\n", p, (unsigned int)*p, *p);
+	}
+	printf("--------------------------------\n");
+}
+
+void printmem_int(void* address) {
+	const unsigned int WINDOW = 20;
+	unsigned int* p = (unsigned int *)(address);
+	printf("--------------------------------\n");
+	for (p; p < (unsigned int *)(address + WINDOW); ++p) {
+		printf("%p: 0x%08X\n", p, *p);
 	}
 	printf("--------------------------------\n");
 }
