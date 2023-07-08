@@ -32,7 +32,7 @@ void printmem(void* address) {
 	const unsigned int WINDOW = 20;
 	unsigned char* p = (unsigned char *)(address);
 	printf("--------------------------------\n");
-	for (p; p < (unsigned char *)(address + WINDOW); ++p) {
+	for (; p < (unsigned char *)(address + WINDOW); ++p) {
 		printf("%p: %02X (%c)\n", p, (unsigned int)*p, *p);
 	}
 	printf("--------------------------------\n");
@@ -42,7 +42,7 @@ void printmem_int(void* address) {
 	const unsigned int WINDOW = 20;
 	unsigned int* p = (unsigned int *)(address);
 	printf("--------------------------------\n");
-	for (p; p < (unsigned int *)(address + WINDOW); ++p) {
+	for (; p < (unsigned int *)(address + WINDOW); ++p) {
 		printf("%p: 0x%08X\n", p, *p);
 	}
 	printf("--------------------------------\n");
