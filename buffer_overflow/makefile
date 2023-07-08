@@ -1,5 +1,5 @@
 CC=gcc
-CFLAGS=-I.
+CFLAGS=-Wall -g -O0
 
 chamber: chamber.o
 	$(CC) -o chamber chamber.o
