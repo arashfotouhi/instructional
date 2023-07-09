@@ -39,24 +39,13 @@ void printmem(void* address) {
 	printf("--------------------------------\n");
 }
 
-void printmem_int(void* address) {
-	const unsigned int WINDOW = 20;
-	unsigned int* p = (unsigned int *)(address);
-	printf("--------------------------------\n");
-	for (; p < (unsigned int *)(address + WINDOW); ++p) {
-		printf("%p: 0x%08X\n", p, *p);
-	}
-	printf("--------------------------------\n");
-}
-
 int is_chamber_safe(const struct chamber *ch) {
 	const int SAFE_LEVEL = 0x44;
 	if (ch->pressure < SAFE_LEVEL) {
 		return 1;
 	}
-	else {
-		return 0;
-	}
+
+	return 0;
 }
 
 void check_chamber(const struct chamber *ch) {
