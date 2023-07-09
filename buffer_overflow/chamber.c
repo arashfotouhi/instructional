@@ -8,7 +8,6 @@ struct chamber {
 };
 
 void printmem(void* start_address);
-void printmem_int(void* start_address);
 int is_chamber_safe(const struct chamber *);
 void check_chamber(const struct chamber *);
 void hack_function(void);
@@ -25,7 +24,6 @@ int main(void) {
 	printmem(&chamber1);
 	printf("Chamber pressure: %X\n", chamber1.pressure);
 	check_chamber(&chamber1);
-	printmem_int(&chamber1);
 	return 0;
 }
 
