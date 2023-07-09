@@ -1,5 +1,5 @@
 CC=gcc
-CFLAGS=-Wall -g -O0
+CFLAGS=-Wall -g -O0 -fno-stack-protector
 
 chamber: chamber.o
 	$(CC) -o chamber chamber.o

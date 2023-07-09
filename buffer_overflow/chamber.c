@@ -11,6 +11,7 @@ void printmem(void* start_address);
 void printmem_int(void* start_address);
 int is_chamber_safe(const struct chamber *);
 void check_chamber(const struct chamber *);
+void hack_function(void);
 
 int main(void) {
 	struct chamber chamber1;
@@ -59,10 +60,16 @@ int is_chamber_safe(const struct chamber *ch) {
 }
 
 void check_chamber(const struct chamber *ch) {
+	char temp[15];
+	scanf("%s", temp);
 	if (is_chamber_safe(ch)) {
 		printf("Chamber is safe.\n");
 	}
 	else {
 		printf("CHAMBER PRESSURE TOO HIGH!!!!\n");
 	}
+}
+
+void hack_function(void) {
+	printf("YOU'RE HACKED!!!\n");
 }
