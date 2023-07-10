@@ -14,13 +14,15 @@ void hack_function(void);
 
 int main(void) {
 	struct chamber chamber1;
-	strcpy(chamber1.name, "alpha");
+	// strcpy(chamber1.name, "alpha"); //UNSAFE -- DON'T USE!
+	strncpy(chamber1.name, "alpha", 14);
 	chamber1.pressure = 0xBB;
 	printmem(&chamber1);
 	printf("Chamber pressure: %X\n", chamber1.pressure);
 	check_chamber(&chamber1);
 	printf("Enter new name for chamber:\n");
-	scanf("%s",chamber1.name);
+	//scanf("%s",chamber1.name); //UNSAFE -- DON'T USE!
+	fgets(chamber1.name, 14, stdin);
 	printmem(&chamber1);
 	printf("Chamber pressure: %X\n", chamber1.pressure);
 	check_chamber(&chamber1);
@@ -47,8 +49,11 @@ int is_chamber_safe(const struct chamber *ch) {
 }
 
 void check_chamber(const struct chamber *ch) {
+	/*** THIS BLOCK IS FOR DEMO ONLY
 	char temp[15];
 	scanf("%s", temp);
+	*******************************/
+
 	if (is_chamber_safe(ch)) {
 		printf("Chamber is safe.\n");
 	}
